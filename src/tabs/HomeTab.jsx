@@ -26,43 +26,43 @@ function HomeTab({ currentGroup, onNavigate }) {
       <div className="welcome-panel">
         <h3>Quick Start Guide</h3>
         <div className="guide-grid">
-          <div className="guide-item">
+          <div className="guide-item" onClick={() => onNavigate('Home')}>
             <strong>Home</strong>
             <p>View reminders and important alerts for your group</p>
           </div>
-          <div className="guide-item">
+          <div className="guide-item" onClick={() => onNavigate('Payroll')}>
             <strong>Payroll</strong>
             <p>Submit, manage, and track payroll submissions</p>
           </div>
-          <div className="guide-item">
+          <div className="guide-item" onClick={() => onNavigate('Employee')}>
             <strong>Employee</strong>
             <p>Search and manage employee records and classifications</p>
           </div>
-          <div className="guide-item">
+          <div className="guide-item" onClick={() => onNavigate('Employer')}>
             <strong>Employer</strong>
             <p>View and edit employer profile and pay cycle configurations</p>
           </div>
-          <div className="guide-item">
+          <div className="guide-item" onClick={() => onNavigate('Accrual')}>
             <strong>Accrual</strong>
             <p>Manage benefit accrual rates and verify employer rates</p>
           </div>
-          <div className="guide-item">
+          <div className="guide-item" onClick={() => onNavigate('Credit')}>
             <strong>Credit</strong>
             <p>View account ledger and make deposits</p>
           </div>
-          <div className="guide-item">
+          <div className="guide-item" onClick={() => onNavigate('Reports')}>
             <strong>Reports</strong>
             <p>Generate and view payroll cost grids and other reports</p>
           </div>
-          <div className="guide-item">
+          <div className="guide-item" onClick={() => onNavigate('Admin')}>
             <strong>Admin</strong>
             <p>Configure system parameters, roles, and thresholds</p>
           </div>
-          <div className="guide-item">
+          <div className="guide-item" onClick={() => onNavigate('AccountStatements')}>
             <strong>Account Statements</strong>
             <p>View and generate account statements</p>
           </div>
-          <div className="guide-item">
+          <div className="guide-item" onClick={() => onNavigate('SharedDocuments')}>
             <strong>Shared Documents</strong>
             <p>Upload, download, and manage shared documents</p>
           </div>
