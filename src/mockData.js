@@ -450,7 +450,9 @@ export function formatCurrency(amount) {
 
 export function formatDate(dateString) {
   if (!dateString) return '';
-  return new Date(dateString).toLocaleDateString('en-US');
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) return 'Invalid Date';
+  return date.toLocaleDateString('en-US');
 }
 
 export function formatPercent(decimal) {

@@ -36,6 +36,8 @@ function App() {
       mockData.currentUser.groupId = found.groupId
       setGroupSearchTerm('')
       setShowGroupSearch(false)
+    } else {
+      alert('No matching group found. Please try a different search term.')
     }
   }
 

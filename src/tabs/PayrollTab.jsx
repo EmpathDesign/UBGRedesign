@@ -146,7 +146,14 @@ function PayrollTab({ currentGroup, canEdit }) {
             </tr>
           </thead>
           <tbody>
-            {payrolls.map(payroll => (
+            {payrolls.length === 0 ? (
+              <tr>
+                <td colSpan={canEdit ? 9 : 8} style={{ textAlign: 'center', padding: '2rem', color: '#64748b' }}>
+                  No payrolls found matching the selected filter.
+                </td>
+              </tr>
+            ) : (
+              payrolls.map(payroll => (
               <tr key={payroll.payrollId}>
                 <td>{payroll.payCycle}</td>
                 <td>{formatDate(payroll.checkDate)}</td>
@@ -173,7 +180,8 @@ function PayrollTab({ currentGroup, canEdit }) {
                   </td>
                 )}
               </tr>
-            ))}
+            ))
+            )}
           </tbody>
         </table>
       </div>

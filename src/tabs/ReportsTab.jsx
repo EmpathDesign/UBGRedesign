@@ -24,8 +24,8 @@ function ReportsTab() {
   const employeeRateHeaders = [0.0000, 0.0025, 0.0050, 0.0075, 0.0100]
 
   const calculateResult = (accrual, employee) => {
-    // Simple calculation: result = accrual + employee + admin
-    return accrual + employee + 0.001
+    // Calculation: result = accrual + employee + admin
+    return accrual + employee + grid1Data.adminFee
   }
 
   const handleRunReport = () => {
