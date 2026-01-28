@@ -18,6 +18,13 @@ function HomeTab({ currentGroup, onNavigate }) {
     }
   }
 
+  const handleKeyDown = (e, tab) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      onNavigate(tab)
+    }
+  }
+
   return (
     <div className="tab-content">
       <h2>Welcome to UBG Management System</h2>
@@ -29,7 +36,7 @@ function HomeTab({ currentGroup, onNavigate }) {
           <div 
             className="guide-item" 
             onClick={() => onNavigate('Home')}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onNavigate('Home')}
+            onKeyDown={(e) => handleKeyDown(e, 'Home')}
             role="button"
             tabIndex={0}
             aria-label="Navigate to Home tab"
@@ -40,7 +47,7 @@ function HomeTab({ currentGroup, onNavigate }) {
           <div 
             className="guide-item" 
             onClick={() => onNavigate('Payroll')}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onNavigate('Payroll')}
+            onKeyDown={(e) => handleKeyDown(e, 'Payroll')}
             role="button"
             tabIndex={0}
             aria-label="Navigate to Payroll tab"
@@ -51,7 +58,7 @@ function HomeTab({ currentGroup, onNavigate }) {
           <div 
             className="guide-item" 
             onClick={() => onNavigate('Employee')}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onNavigate('Employee')}
+            onKeyDown={(e) => handleKeyDown(e, 'Employee')}
             role="button"
             tabIndex={0}
             aria-label="Navigate to Employee tab"
@@ -62,7 +69,7 @@ function HomeTab({ currentGroup, onNavigate }) {
           <div 
             className="guide-item" 
             onClick={() => onNavigate('Employer')}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onNavigate('Employer')}
+            onKeyDown={(e) => handleKeyDown(e, 'Employer')}
             role="button"
             tabIndex={0}
             aria-label="Navigate to Employer tab"
@@ -73,7 +80,7 @@ function HomeTab({ currentGroup, onNavigate }) {
           <div 
             className="guide-item" 
             onClick={() => onNavigate('Accrual')}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onNavigate('Accrual')}
+            onKeyDown={(e) => handleKeyDown(e, 'Accrual')}
             role="button"
             tabIndex={0}
             aria-label="Navigate to Accrual tab"
@@ -84,7 +91,7 @@ function HomeTab({ currentGroup, onNavigate }) {
           <div 
             className="guide-item" 
             onClick={() => onNavigate('Credit')}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onNavigate('Credit')}
+            onKeyDown={(e) => handleKeyDown(e, 'Credit')}
             role="button"
             tabIndex={0}
             aria-label="Navigate to Credit tab"
@@ -95,7 +102,7 @@ function HomeTab({ currentGroup, onNavigate }) {
           <div 
             className="guide-item" 
             onClick={() => onNavigate('Reports')}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onNavigate('Reports')}
+            onKeyDown={(e) => handleKeyDown(e, 'Reports')}
             role="button"
             tabIndex={0}
             aria-label="Navigate to Reports tab"
@@ -106,7 +113,7 @@ function HomeTab({ currentGroup, onNavigate }) {
           <div 
             className="guide-item" 
             onClick={() => onNavigate('Admin')}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onNavigate('Admin')}
+            onKeyDown={(e) => handleKeyDown(e, 'Admin')}
             role="button"
             tabIndex={0}
             aria-label="Navigate to Admin tab"
@@ -117,7 +124,7 @@ function HomeTab({ currentGroup, onNavigate }) {
           <div 
             className="guide-item" 
             onClick={() => onNavigate('AccountStatements')}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onNavigate('AccountStatements')}
+            onKeyDown={(e) => handleKeyDown(e, 'AccountStatements')}
             role="button"
             tabIndex={0}
             aria-label="Navigate to Account Statements tab"
@@ -128,7 +135,7 @@ function HomeTab({ currentGroup, onNavigate }) {
           <div 
             className="guide-item" 
             onClick={() => onNavigate('SharedDocuments')}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onNavigate('SharedDocuments')}
+            onKeyDown={(e) => handleKeyDown(e, 'SharedDocuments')}
             role="button"
             tabIndex={0}
             aria-label="Navigate to Shared Documents tab"
