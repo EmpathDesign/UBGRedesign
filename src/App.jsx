@@ -1,13 +1,69 @@
 import { useState } from 'react'
 import './App.css'
 import logo from './assets/UBGLogo.png'
+import { mockData, getCurrentGroup, hasTabAccess, canEdit } from './mockData'
+import HomeTab from './tabs/HomeTab'
+import PayrollTab from './tabs/PayrollTab'
+import EmployeeTab from './tabs/EmployeeTab'
+import EmployerTab from './tabs/EmployerTab'
+import CreditTab from './tabs/CreditTab'
+import AdminTab from './tabs/AdminTab'
+import AccrualTab from './tabs/AccrualTab'
+import ReportsTab from './tabs/ReportsTab'
+import AccountStatementsTab from './tabs/AccountStatementsTab'
+import SharedDocumentsTab from './tabs/SharedDocumentsTab'
 
 function App() {
-  const [activeTab, setActiveTab] = useState('home')
-  const [notifications, setNotifications] = useState(3)
+  const [activeTab, setActiveTab] = useState('Home')
+  const [currentGroup, setCurrentGroup] = useState(getCurrentGroup())
+  const [groupSearchTerm, setGroupSearchTerm] = useState('')
+  const [showGroupSearch, setShowGroupSearch] = useState(false)
 
-  const handleNotificationClick = () => {
-    setNotifications(0)
+  const tabs = [
+    'Home', 'Payroll', 'Employee', 'Employer', 'Accrual', 
+    'Credit', 'Reports', 'Admin', 'AccountStatements', 'SharedDocuments'
+  ].filter(tab => hasTabAccess(tab))
+
+  const handleLoadGroup = () => {
+    const searchLower = groupSearchTerm.toLowerCase()
+    const found = mockData.groups.find(g => 
+      g.groupNumber.toLowerCase().includes(searchLower) ||
+      g.name.toLowerCase().includes(searchLower) ||
+      g.city?.toLowerCase().includes(searchLower)
+    )
+    if (found) {
+      setCurrentGroup(found)
+      mockData.currentUser.groupId = found.groupId
+      setGroupSearchTerm('')
+      setShowGroupSearch(false)
+    }
+  }
+
+  const renderTabContent = () => {
+    switch(activeTab) {
+      case 'Home':
+        return <HomeTab currentGroup={currentGroup} onNavigate={setActiveTab} />
+      case 'Payroll':
+        return <PayrollTab currentGroup={currentGroup} canEdit={canEdit('Payroll')} />
+      case 'Employee':
+        return <EmployeeTab currentGroup={currentGroup} canEdit={canEdit('Employee')} />
+      case 'Employer':
+        return <EmployerTab currentGroup={currentGroup} canEdit={canEdit('Employer')} />
+      case 'Credit':
+        return <CreditTab currentGroup={currentGroup} canEdit={canEdit('Credit')} />
+      case 'Admin':
+        return <AdminTab canEdit={canEdit('Admin')} />
+      case 'Accrual':
+        return <AccrualTab currentGroup={currentGroup} canEdit={canEdit('Accrual')} />
+      case 'Reports':
+        return <ReportsTab currentGroup={currentGroup} />
+      case 'AccountStatements':
+        return <AccountStatementsTab currentGroup={currentGroup} canEdit={canEdit('AccountStatements')} />
+      case 'SharedDocuments':
+        return <SharedDocumentsTab currentGroup={currentGroup} canEdit={canEdit('SharedDocuments')} />
+      default:
+        return <div>Tab not implemented</div>
+    }
   }
 
   return (
@@ -18,141 +74,66 @@ function App() {
           <div className="logo">
             <img src={logo} alt="UBG Logo" className="logo-image" />
           </div>
-          <nav className="nav" aria-label="Main navigation">
-            <button 
-              className={activeTab === 'home' ? 'active' : ''}
-              onClick={() => setActiveTab('home')}
-              role="tab"
-              aria-selected={activeTab === 'home'}
-            >
-              Home
-            </button>
-            <button 
-              className={activeTab === 'features' ? 'active' : ''}
-              onClick={() => setActiveTab('features')}
-              role="tab"
-              aria-selected={activeTab === 'features'}
-            >
-              Features
-            </button>
-            <button 
-              className={activeTab === 'about' ? 'active' : ''}
-              onClick={() => setActiveTab('about')}
-              role="tab"
-              aria-selected={activeTab === 'about'}
-            >
-              About
-            </button>
-          </nav>
-          <div className="header-actions">
-            <button 
-              className="notification-btn" 
-              onClick={handleNotificationClick}
-              aria-label={`Notifications ${notifications > 0 ? `(${notifications} unread)` : '(no unread notifications)'}`}
-            >
-              🔔
-              {notifications > 0 && <span className="badge" aria-hidden="true">{notifications}</span>}
-            </button>
+          
+          <div className="group-context">
+            <div className="group-info">
+              <span className="group-label">Group:</span>
+              <span className="group-name">{currentGroup?.groupNumber} - {currentGroup?.name}</span>
+              <button 
+                className="group-search-btn"
+                onClick={() => setShowGroupSearch(!showGroupSearch)}
+                aria-label="Search for a different group"
+              >
+                🔍
+              </button>
+            </div>
+            {showGroupSearch && (
+              <div className="group-search-panel">
+                <input
+                  type="text"
+                  placeholder="Search by group #, name, or city..."
+                  value={groupSearchTerm}
+                  onChange={(e) => setGroupSearchTerm(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleLoadGroup()}
+                />
+                <button onClick={handleLoadGroup}>Load</button>
+                <button onClick={() => setShowGroupSearch(false)}>Cancel</button>
+              </div>
+            )}
+          </div>
+
+          <div className="user-info">
+            <span>{mockData.currentUser.displayName}</span>
+            <span className="user-role">({mockData.roles.find(r => r.roleId === mockData.currentUser.roleId)?.roleName})</span>
           </div>
         </div>
       </header>
 
+      {/* Tab Navigation */}
+      <nav className="tab-nav" aria-label="Main navigation">
+        {tabs.map(tab => (
+          <button 
+            key={tab}
+            className={activeTab === tab ? 'active' : ''}
+            onClick={() => setActiveTab(tab)}
+            role="tab"
+            aria-selected={activeTab === tab}
+          >
+            {tab === 'AccountStatements' ? 'Account Statements' : 
+             tab === 'SharedDocuments' ? 'Shared Documents' : tab}
+          </button>
+        ))}
+      </nav>
+
       {/* Main Content */}
       <main className="main-content">
-        {activeTab === 'home' && (
-          <div className="tab-content">
-            <h2>Welcome to UBG Redesign</h2>
-            <p className="subtitle">Interactive Mockup Platform</p>
-            
-            <div className="hero-section">
-              <div className="hero-content">
-                <h3>Create Beautiful Mockups</h3>
-                <p>This is a sample interactive mockup built with React and Vite. 
-                   Submit issue requests to create new screens and mockups.</p>
-                <button 
-                  className="cta-button"
-                  aria-label="Get started with UBG Redesign mockups"
-                >
-                  Get Started
-                </button>
-              </div>
-              <div className="hero-image">
-                <div className="placeholder-image">
-                  <span>📱</span>
-                  <p>Mockup Preview</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="stats-grid">
-              <div className="stat-card">
-                <h4>⚡ Fast</h4>
-                <p>Lightning-fast development with Vite</p>
-              </div>
-              <div className="stat-card">
-                <h4>🎨 Modern</h4>
-                <p>Built with React 19 and modern CSS</p>
-              </div>
-              <div className="stat-card">
-                <h4>🚀 Deployed</h4>
-                <p>Automatically deployed via GitHub Actions</p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'features' && (
-          <div className="tab-content">
-            <h2>Features</h2>
-            <div className="features-list">
-              <div className="feature-item">
-                <h3>🎯 Interactive Components</h3>
-                <p>Fully interactive UI components with state management</p>
-              </div>
-              <div className="feature-item">
-                <h3>📱 Responsive Design</h3>
-                <p>Works seamlessly across all devices and screen sizes</p>
-              </div>
-              <div className="feature-item">
-                <h3>🔄 Live Updates</h3>
-                <p>Hot module replacement for instant feedback during development</p>
-              </div>
-              <div className="feature-item">
-                <h3>🎨 Customizable</h3>
-                <p>Easy to customize and extend with your own components</p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'about' && (
-          <div className="tab-content">
-            <h2>About This Project</h2>
-            <div className="about-content">
-              <p>
-                This is a sample mockup infrastructure built with modern web technologies:
-              </p>
-              <ul>
-                <li><strong>React 19</strong> - Latest version of the most popular UI framework</li>
-                <li><strong>Vite</strong> - Next-generation frontend tooling</li>
-                <li><strong>GitHub Pages</strong> - Free hosting for your mockups</li>
-                <li><strong>GitHub Actions</strong> - Automated CI/CD pipeline</li>
-              </ul>
-              <p>
-                Submit issues to request new mockup screens, and they will be automatically 
-                built and deployed to GitHub Pages.
-              </p>
-            </div>
-          </div>
-        )}
+        {renderTabContent()}
       </main>
 
       {/* Footer */}
       <footer className="footer">
-        <p>© 2026 UBG Redesign - Built with React + Vite</p>
-        <p className="footer-note">
-          Submit issues on GitHub to request new mockup screens
-        </p>
+        <p>© 2026 UBG Redesign - Union Benefit Group Management System</p>
+        <p className="footer-note">Support: {currentGroup?.supportPhone || '1-800-555-0199'}</p>
       </footer>
     </div>
   )
