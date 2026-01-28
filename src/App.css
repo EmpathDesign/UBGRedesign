@@ -22,10 +22,22 @@
   gap: 2rem;
 }
 
-.logo h1 {
-  margin: 0;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-image {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-text {
   font-size: 1.5rem;
   font-weight: 700;
+  margin: 0;
 }
 
 .nav {

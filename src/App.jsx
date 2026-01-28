@@ -15,7 +15,8 @@ function App() {
       <header className="header">
         <div className="header-content">
           <div className="logo">
-            <h1>UBG Redesign</h1>
+            <img src="/UBGRedesign/logo.svg" alt="UBG Logo" className="logo-image" />
+            <span className="logo-text">UBG Redesign</span>
           </div>
           <nav className="nav" aria-label="Main navigation">
             <button 
