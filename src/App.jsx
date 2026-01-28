@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import logo from './assets/UBGLogo.png'
 
 function App() {
   const [activeTab, setActiveTab] = useState('home')
@@ -15,8 +16,7 @@ function App() {
       <header className="header">
         <div className="header-content">
           <div className="logo">
-            <img src="/UBGRedesign/logo.svg" alt="UBG Logo" className="logo-image" />
-            <span className="logo-text">UBG Redesign</span>
+            <img src={logo} alt="UBG Logo" className="logo-image" />
           </div>
           <nav className="nav" aria-label="Main navigation">
             <button 
