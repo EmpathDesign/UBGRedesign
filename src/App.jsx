@@ -17,30 +17,40 @@ function App() {
           <div className="logo">
             <h1>UBG Redesign</h1>
           </div>
-          <nav className="nav">
+          <nav className="nav" aria-label="Main navigation">
             <button 
               className={activeTab === 'home' ? 'active' : ''}
               onClick={() => setActiveTab('home')}
+              role="tab"
+              aria-selected={activeTab === 'home'}
             >
               Home
             </button>
             <button 
               className={activeTab === 'features' ? 'active' : ''}
               onClick={() => setActiveTab('features')}
+              role="tab"
+              aria-selected={activeTab === 'features'}
             >
               Features
             </button>
             <button 
               className={activeTab === 'about' ? 'active' : ''}
               onClick={() => setActiveTab('about')}
+              role="tab"
+              aria-selected={activeTab === 'about'}
             >
               About
             </button>
           </nav>
           <div className="header-actions">
-            <button className="notification-btn" onClick={handleNotificationClick}>
+            <button 
+              className="notification-btn" 
+              onClick={handleNotificationClick}
+              aria-label={`Notifications ${notifications > 0 ? `(${notifications} unread)` : '(no unread notifications)'}`}
+            >
               🔔
-              {notifications > 0 && <span className="badge">{notifications}</span>}
+              {notifications > 0 && <span className="badge" aria-hidden="true">{notifications}</span>}
             </button>
           </div>
         </div>
@@ -58,7 +68,12 @@ function App() {
                 <h3>Create Beautiful Mockups</h3>
                 <p>This is a sample interactive mockup built with React and Vite. 
                    Submit issue requests to create new screens and mockups.</p>
-                <button className="cta-button">Get Started</button>
+                <button 
+                  className="cta-button"
+                  aria-label="Get started with UBG Redesign mockups"
+                >
+                  Get Started
+                </button>
               </div>
               <div className="hero-image">
                 <div className="placeholder-image">
