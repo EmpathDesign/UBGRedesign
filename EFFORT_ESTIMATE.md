@@ -4,7 +4,7 @@
 
 This document provides a high-level task breakdown and effort estimate for converting the UBG Redesign mockup into a production-ready application connected to REST API endpoints.
 
-**Total Estimated Effort: 568-724 hours (16-21 weeks with 1 developer)**
+**Total Estimated Effort: 616-786 hours (17-21 weeks with 1 developer)**
 
 **Current State:**
 - Interactive React-based mockup with 10 functional tabs
@@ -59,7 +59,7 @@ This document provides a high-level task breakdown and effort estimate for conve
 
 ---
 
-## 2. Core Application Features (240-320 hours)
+## 2. Core Application Features (288-362 hours)
 
 ### 2.1 Header & Navigation (16-20 hours)
 - [ ] Integrate group search with API endpoint
@@ -406,26 +406,27 @@ This document provides a high-level task breakdown and effort estimate for conve
 - API client and service layer
 - **Effort: 80-100 hours**
 
-### Phase 2: Core Features Part 1 (Weeks 5-9)
+### Phase 2: Core Features Part 1 (Weeks 5-10)
+- Header & Navigation tab
 - Home, Payroll, Employee tabs
 - Basic CRUD operations
-- **Effort: 104-132 hours**
+- **Effort: 120-152 hours**
 
-### Phase 3: Core Features Part 2 (Weeks 10-13)
+### Phase 3: Core Features Part 2 (Weeks 11-15)
 - Employer, Accrual, Credit, Reports tabs
-- **Effort: 96-120 hours**
+- **Effort: 112-140 hours**
 
-### Phase 4: Additional Features (Weeks 14-15)
+### Phase 4: Additional Features (Weeks 16-17)
 - Admin, Account Statements, Shared Documents tabs
 - **Effort: 56-70 hours**
 
-### Phase 5: Polish & Testing (Weeks 16-19)
+### Phase 5: Polish & Testing (Weeks 18-21)
 - Cross-cutting concerns (80-100 hours)
 - Testing (80-100 hours)
 - Documentation (24-32 hours)
 - **Effort: 184-232 hours**
 
-### Phase 6: Deployment (Weeks 20-21)
+### Phase 6: Deployment (Weeks 22-23)
 - Production deployment (16-28 hours)
 - User acceptance testing (16-24 hours)
 - Bug fixes and adjustments (32-40 hours)
@@ -442,13 +443,13 @@ This document provides a high-level task breakdown and effort estimate for conve
 - **1 UI/UX Designer** (part-time): Design refinements, accessibility
 - **1 DevOps Engineer** (part-time): CI/CD, deployment, monitoring
 
-**Timeline with Optimal Team: 8-10 weeks**
+**Timeline with Optimal Team: 9-12 weeks**
 
 ### Minimal Team
 - **1 Senior Full-Stack Developer**: All development tasks
 - **QA**: Testing done by developer
 
-**Timeline with Minimal Team: 16-21 weeks**
+**Timeline with Minimal Team: 17-21 weeks**
 
 ---
 
@@ -523,10 +524,10 @@ The following items are NOT included in this estimate:
 
 This effort estimate provides a comprehensive breakdown of tasks required to convert the UBG Redesign mockup into a production-ready application. The estimate includes:
 
-- **Total Estimated Hours**: 568-724 hours
-- **Timeline**: 16-21 weeks (single developer) or 8-10 weeks (full team)
+- **Total Estimated Hours**: 616-786 hours
+- **Timeline**: 17-21 weeks (single developer) or 9-12 weeks (full team)
 - **Major Phases**: 6 phases from foundation to deployment
-- **API Endpoints**: ~67 endpoints across 11 functional areas
+- **API Endpoints**: ~62 endpoints across 13 functional areas
 
 The estimate accounts for production-quality code including error handling, testing, documentation, and deployment. Actual effort may vary based on API complexity, requirement changes, and team composition.
 
