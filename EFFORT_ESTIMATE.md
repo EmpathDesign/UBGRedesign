@@ -4,7 +4,7 @@
 
 This document provides a high-level task breakdown and effort estimate for converting the UBG Redesign mockup into a production-ready application connected to REST API endpoints.
 
-**Total Estimated Effort: 520-680 hours (13-17 weeks with 1 developer)**
+**Total Estimated Effort: 568-724 hours (16-21 weeks with 1 developer)**
 
 **Current State:**
 - Interactive React-based mockup with 10 functional tabs
@@ -419,17 +419,17 @@ This document provides a high-level task breakdown and effort estimate for conve
 - Admin, Account Statements, Shared Documents tabs
 - **Effort: 56-70 hours**
 
-### Phase 5: Polish & Testing (Weeks 16-17)
-- Cross-cutting concerns
-- Testing
-- Documentation
-- **Effort: 120-140 hours**
+### Phase 5: Polish & Testing (Weeks 16-19)
+- Cross-cutting concerns (80-100 hours)
+- Testing (80-100 hours)
+- Documentation (24-32 hours)
+- **Effort: 184-232 hours**
 
-### Phase 6: Deployment (Week 17)
-- Production deployment
-- User acceptance testing
-- Bug fixes
-- **Effort: 64-118 hours**
+### Phase 6: Deployment (Weeks 20-21)
+- Production deployment (16-28 hours)
+- User acceptance testing (16-24 hours)
+- Bug fixes and adjustments (32-40 hours)
+- **Effort: 64-92 hours**
 
 ---
 
@@ -442,13 +442,13 @@ This document provides a high-level task breakdown and effort estimate for conve
 - **1 UI/UX Designer** (part-time): Design refinements, accessibility
 - **1 DevOps Engineer** (part-time): CI/CD, deployment, monitoring
 
-**Timeline with Optimal Team: 6-8 weeks**
+**Timeline with Optimal Team: 8-10 weeks**
 
 ### Minimal Team
 - **1 Senior Full-Stack Developer**: All development tasks
 - **QA**: Testing done by developer
 
-**Timeline with Minimal Team: 13-17 weeks**
+**Timeline with Minimal Team: 16-21 weeks**
 
 ---
 
@@ -523,10 +523,10 @@ The following items are NOT included in this estimate:
 
 This effort estimate provides a comprehensive breakdown of tasks required to convert the UBG Redesign mockup into a production-ready application. The estimate includes:
 
-- **Total Estimated Hours**: 520-680 hours
-- **Timeline**: 13-17 weeks (single developer) or 6-8 weeks (full team)
+- **Total Estimated Hours**: 568-724 hours
+- **Timeline**: 16-21 weeks (single developer) or 8-10 weeks (full team)
 - **Major Phases**: 6 phases from foundation to deployment
-- **API Endpoints**: ~75+ endpoints across 11 functional areas
+- **API Endpoints**: ~67 endpoints across 11 functional areas
 
 The estimate accounts for production-quality code including error handling, testing, documentation, and deployment. Actual effort may vary based on API complexity, requirement changes, and team composition.
 
